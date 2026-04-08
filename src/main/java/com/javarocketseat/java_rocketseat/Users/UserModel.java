@@ -1,13 +1,28 @@
 package com.javarocketseat.java_rocketseat.Users;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
-@Getter
-@Setter
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Data
+@Entity(name="tb_users")
 public class UserModel {
-    private String name;
+    @Id
+    @GeneratedValue(generator="UUID")
+    private UUID id;
+
+    @Column(name="usuario")
     private String username;
+    private String name;
     private String password;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
 }
