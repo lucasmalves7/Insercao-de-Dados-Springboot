@@ -7,4 +7,8 @@ import java.util.UUID;
 //No JpaRepository se define a entidade e o tipo de ID que será passado através dessa entidade
 public interface IUserRepository extends JpaRepository<UserModel, UUID> {
 //Feito isso, todos os métodos contidos no JpaRepository poderão ser acessados
+
+    //habilitando o metodo findBy, que será utilizado em UserController,
+    //que verificará se o usuário vindo de UserModel (fará um SELECT) já existe ou não.
+    UserModel findByUsername(String username);
 }
